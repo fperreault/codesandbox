@@ -1,0 +1,23 @@
+ 
+ .base {
+    @apply text-[var(--colors-white)] text-center text-[0.875rem];
+
+    @apply bg-[var(--colors-primary)]; 
+    @apply border-[1px] border-solid border-[var(--colors-primary)] rounded-[36px]; 
+
+    @apply px-[1.86em];
+    @apply min-w-[2.25rem] min-h-[2.25rem] w-fit;
+
+    @apply duration-[.2s];
+    @apply transition-[color,background,transform];
+    @apply transform-gpu;
+
+    @apply hover:bg-[var(--colors-white)];
+    @apply hover:text-[var(--primary-color)];
+
+    @apply active:scale-95;
+  }
+
+  .selected {
+    @apply text-[var(--primary-color)] bg-[var(--colors-white)];
+  }
