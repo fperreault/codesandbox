@@ -20,7 +20,7 @@ const PageTailwind = (): JSX.Element => {
     <Wrapper>
       <H1>Tailwind</H1>
       <section>
-        <h2 className='btn-blue text-2xl'>Tailwind buttons</h2>
+        <h2 className='text-2xl text-primary'>Tailwind buttons</h2>
         <ButtonInline>Button tailwind (basic inline injection)</ButtonInline>
         <ButtonMemo>Button tailwind (with memo)</ButtonMemo>
         <ButtonModule>Button tailwind (css module)</ButtonModule>
