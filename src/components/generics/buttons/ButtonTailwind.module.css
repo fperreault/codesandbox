@@ -1,23 +1,35 @@
  
  .base {
-    @apply text-[var(--colors-white)] text-center text-[0.875rem];
+    @apply text-white text-sm text-center;
 
-    @apply bg-[var(--colors-primary)]; 
-    @apply border-[1px] border-solid border-[var(--colors-primary)] rounded-[36px]; 
+    @apply bg-primary; 
+    @apply border-solid border-[1px] border-[var(--colors-primary)] rounded-[36px]; 
 
-    @apply px-[1.86em];
+    @apply px-7;
     @apply min-w-[2.25rem] min-h-[2.25rem] w-fit;
 
     @apply duration-[.2s];
     @apply transition-[color,background,transform];
-    @apply transform-gpu;
 
-    @apply hover:bg-[var(--colors-white)];
-    @apply hover:text-[var(--primary-color)];
+    @apply hover:bg-white;
+    @apply hover:text-black;
 
     @apply active:scale-95;
+
+    @apply dark:text-black;
+    @apply dark:bg-white;
+  }
+  .selected {
+    @apply text-primary bg-white;
   }
 
-  .selected {
-    @apply text-[var(--primary-color)] bg-[var(--colors-white)];
+  /* Dark mode */
+  /* Workarround avec css module, utiliser :global(.dark) au lieu de dark: */
+  :global(.dark) .base,  
+  :global(.dark) .selected {
+    @apply text-black;
+    @apply bg-white;
+
+    @apply hover:bg-black;
+    @apply hover:text-white;
   }

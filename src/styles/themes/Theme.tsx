@@ -64,6 +64,13 @@ const Provider: FC<ProviderProps> = ({
     setCssVars(currentTheme, document.documentElement);
   }, [currentTheme]);
 
+  // set dark class in html node for Tailwind implementation
+  useEffect(() => {
+    const html = document.querySelector('html');
+    if (theme === ThemeMode.DARKMODE) html?.classList.add('dark');
+    else html?.classList.remove('dark');
+  }, [theme]);
+
   return (
     <ThemeProvider theme={currentTheme}>
       <Context.Provider value={{ theme, setThemeToggle }}>

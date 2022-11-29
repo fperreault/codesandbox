@@ -16,11 +16,7 @@ type ButtonProps = DetailedHTMLProps<
   selected: boolean;
 };
 
-const ButtonWithMemo = ({
-  children,
-  selected,
-  ...rest
-}: Partial<ButtonProps>) => {
+const ButtonMemo = ({ children, selected, ...rest }: Partial<ButtonProps>) => {
   const className = useClassName(style.base, selected && style.selected);
 
   return (
@@ -30,7 +26,7 @@ const ButtonWithMemo = ({
   );
 };
 
-const ButtonWithoutMemo = ({
+const ButtonModule = ({
   children,
   selected,
   ...rest
@@ -42,12 +38,28 @@ const ButtonWithoutMemo = ({
   );
 };
 
-const ButtonSelected = () => {
+const ButtonSelected = ({ children, ...rest }: Partial<ButtonProps>) => {
   const [selected, setSelected] = useState<boolean>(false);
+
   return (
-    <ButtonWithMemo selected={selected} onClick={() => setSelected(!selected)}>
-      Button selected (with memo and tw injection)
-    </ButtonWithMemo>
+    <ButtonMemo
+      {...rest}
+      selected={selected}
+      onClick={() => setSelected(!selected)}
+    >
+      {children}
+    </ButtonMemo>
+  );
+};
+
+const ButtonClassName = ({ children, ...rest }: Partial<ButtonProps>) => {
+  const classname =
+    'min-h-[2.25rem] w-fit min-w-[2.25rem] transform-gpu rounded-[36px] border-[1px] border-solid border-[var(--colors-primary)] bg-[var(--colors-primary)] px-[1.86em] text-center text-[0.875rem] leading-[1rem] text-[var(--colors-white)] transition-[color,background,transform] duration-[.2s] hover:bg-[var(--colors-white)]  hover:text-[var(--primary-color)] active:scale-95';
+
+  return (
+    <button {...rest} className={classname}>
+      {children}
+    </button>
   );
 };
 
@@ -76,4 +88,10 @@ const ButtonInline = ({ children, ...rest }: Partial<ButtonProps>) => {
 // const className = `border-2 border-solid rounded-2xl text-[${rem(14)}]`;
 /************************/
 
-export { ButtonWithMemo, ButtonWithoutMemo, ButtonSelected, ButtonInline };
+export {
+  ButtonMemo,
+  ButtonModule,
+  ButtonSelected,
+  ButtonClassName,
+  ButtonInline,
+};
