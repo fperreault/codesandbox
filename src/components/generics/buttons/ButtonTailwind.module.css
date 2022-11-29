@@ -3,7 +3,7 @@
     @apply text-white text-sm text-center;
 
     @apply bg-primary; 
-    @apply border-solid border-[1px] border-[var(--colors-primary)] rounded-[36px]; 
+    @apply border-solid border-[1px] border-primary rounded-[36px]; 
 
     @apply px-7;
     @apply min-w-[2.25rem] min-h-[2.25rem] w-fit;

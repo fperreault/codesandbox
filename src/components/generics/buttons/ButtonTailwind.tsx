@@ -84,7 +84,7 @@ const ButtonInline = ({ children, ...rest }: Partial<ButtonProps>) => {
 // const className = "text-[var(--colors-white)] hidden block";
 
 // Ne pas faire de déclation dans un template string -> Tailwind IntelliSense ne fonctionne pas
-// Ne pas faire d'injection dynamique de variables (ex: text-[${rem(14)}]) -> sera ignorée au build dont ne fonctionnera pas
+// Ne pas faire d'injection dynamique de variables (ex: text-[${rem(14)}]) -> sera ignorée au build donc ne fonctionnera pas
 // const className = `border-2 border-solid rounded-2xl text-[${rem(14)}]`;
 /************************/
 

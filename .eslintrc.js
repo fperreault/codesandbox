@@ -6,6 +6,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
+    'plugin:tailwindcss/recommended',
     'prettier',
   ],
   env: {
@@ -19,11 +20,20 @@ module.exports = {
     ecmaVersion: 11,
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint/eslint-plugin', 'import'],
+  plugins: ['@typescript-eslint/eslint-plugin', 'import', 'tailwindcss'],
   rules: {
     'react/prop-types': 0,
+
     '@typescript-eslint/no-explicit-any': 0,
     '@typescript-eslint/no-unused-vars': 0,
+
+    'tailwindcss/classnames-order': 'warn',
+    'tailwindcss/enforces-negative-arbitrary-values': 'warn',
+    'tailwindcss/enforces-shorthand': 'warn',
+    'tailwindcss/migration-from-tailwind-2': 'warn',
+    'tailwindcss/no-arbitrary-value': 'off',
+    'tailwindcss/no-custom-classname': 'warn',
+    'tailwindcss/no-contradicting-classname': 'error',
 
     'import/order': [
       'error',
