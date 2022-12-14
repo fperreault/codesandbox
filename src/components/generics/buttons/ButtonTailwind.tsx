@@ -54,7 +54,7 @@ const ButtonSelected = ({ children, ...rest }: Partial<ButtonProps>) => {
 
 const ButtonClassName = ({ children, ...rest }: Partial<ButtonProps>) => {
   const classname =
-    'min-h-[2.25rem] w-fit min-w-[2.25rem] transform-gpu rounded-[36px] border-[1px] border-solid border-[var(--colors-primary)] bg-[var(--colors-primary)] px-[1.86em] text-center text-[0.875rem] leading-[1rem] text-[var(--colors-white)] transition-[color,background,transform] duration-[.2s] hover:bg-[var(--colors-white)]  hover:text-[var(--primary-color)] active:scale-95';
+    'min-h-[2.25rem] w-fit min-w-[2.25rem] transform-gpu rounded-[36px] border-[1px] border-solid border-primary bg-primary px-[1.86em] text-center text-[0.875rem] leading-[1rem] text-white transition-[color,background,transform] duration-[.2s] hover:bg-white  hover:text-primary active:scale-95';
 
   return (
     <button {...rest} className={classname}>
@@ -67,7 +67,7 @@ const ButtonInline = ({ children, ...rest }: Partial<ButtonProps>) => {
   return (
     <button
       {...rest}
-      className='min-h-[2.25rem] w-fit min-w-[2.25rem] transform-gpu rounded-[36px] border-[1px] border-solid border-[var(--colors-primary)] bg-[var(--colors-primary)] px-[1.86em] text-center text-[0.875rem] leading-[1rem] text-[var(--colors-white)] transition-[color,background,transform] duration-[.2s] hover:bg-[var(--colors-white)]  hover:text-[var(--primary-color)] active:scale-95'
+      className='min-h-[2.25rem] w-fit min-w-[2.25rem] transform-gpu rounded-[36px] border-[1px] border-solid border-primary bg-primary px-[1.86em] text-center text-[0.875rem] leading-[1rem] text-white transition-[color,background,transform] duration-[.2s] hover:bg-white  hover:text-primary active:scale-95'
     >
       {children}
     </button>
