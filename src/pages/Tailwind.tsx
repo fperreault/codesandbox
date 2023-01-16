@@ -3,10 +3,10 @@ import React from 'react';
 
 import { H1 } from '@components/generics';
 import {
-  ButtonMemo,
-  ButtonModule,
-  ButtonSelected,
   ButtonInline,
+  ButtonConstClassName,
+  ButtonClassNames,
+  ButtonCssModule,
 } from '@components/generics/buttons/ButtonTailwind';
 
 import { Wrapper } from '@styles/tools';
@@ -21,10 +21,12 @@ const PageTailwind = (): JSX.Element => {
       <H1>Tailwind</H1>
       <section>
         <h2 className='text-2xl text-primary'>Tailwind buttons</h2>
-        <ButtonInline>Button tailwind (basic inline injection)</ButtonInline>
-        <ButtonMemo>Button tailwind (with memo)</ButtonMemo>
-        <ButtonModule>Button tailwind (css module)</ButtonModule>
-        <ButtonSelected>Button tailwind (select conditonn)</ButtonSelected>
+        <div className='grid grid-cols-1 gap-4 tablet:grid-cols-2 laptop:grid-cols-4'>
+          <ButtonInline>inline injection</ButtonInline>
+          <ButtonConstClassName>const classname</ButtonConstClassName>
+          <ButtonClassNames>with classnames</ButtonClassNames>
+          <ButtonCssModule>css module</ButtonCssModule>
+        </div>
       </section>
     </Wrapper>
   );

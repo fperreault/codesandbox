@@ -5,56 +5,28 @@ import React, {
   useState,
 } from 'react';
 
-import { rem, className, useClassName } from '@styles/utils';
-
-import style from './ButtonTailwind.module.css';
+import cssModule from './ButtonTailwind.module.css';
+import cssClassnames from './ButtonTailwind.style';
 
 type ButtonProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
-> & {
-  selected: boolean;
-};
+>;
 
-const ButtonMemo = ({ children, selected, ...rest }: Partial<ButtonProps>) => {
-  const className = useClassName(style.base, selected && style.selected);
-
+const ButtonInline = ({ children, ...rest }: Partial<ButtonProps>) => {
   return (
-    <button {...rest} {...className}>
-      {children}
-    </button>
-  );
-};
-
-const ButtonModule = ({
-  children,
-  selected,
-  ...rest
-}: Partial<ButtonProps>) => {
-  return (
-    <button {...rest} {...className(style.base, selected && style.selected)}>
-      {children}
-    </button>
-  );
-};
-
-const ButtonSelected = ({ children, ...rest }: Partial<ButtonProps>) => {
-  const [selected, setSelected] = useState<boolean>(false);
-
-  return (
-    <ButtonMemo
+    <button
       {...rest}
-      selected={selected}
-      onClick={() => setSelected(!selected)}
+      className='min-h-[2.25rem] w-fit min-w-full transform-gpu rounded-[36px] border-[1px] border-solid border-primary bg-primary px-[1.86em] text-center text-[0.875rem] leading-[1rem] text-white transition-[color,background,transform] duration-[.2s] hover:bg-white hover:text-primary  active:scale-95 dark:bg-white dark:text-black dark:hover:bg-black dark:hover:text-white tablet:min-w-[2.25rem]'
     >
       {children}
-    </ButtonMemo>
+    </button>
   );
 };
 
-const ButtonClassName = ({ children, ...rest }: Partial<ButtonProps>) => {
+const ButtonConstClassName = ({ children, ...rest }: Partial<ButtonProps>) => {
   const classname =
-    'min-h-[2.25rem] w-fit min-w-[2.25rem] transform-gpu rounded-[36px] border-[1px] border-solid border-primary bg-primary px-[1.86em] text-center text-[0.875rem] leading-[1rem] text-white transition-[color,background,transform] duration-[.2s] hover:bg-white  hover:text-primary active:scale-95';
+    'min-h-[2.25rem] w-fit min-w-full tablet:min-w-[2.25rem] transform-gpu rounded-[36px] border-[1px] border-solid border-primary bg-primary px-[1.86em] text-center text-[0.875rem] leading-[1rem] text-white transition-[color,background,transform] duration-[.2s] hover:bg-white  hover:text-primary active:scale-95 dark:bg-white dark:text-black dark:bg-white dark:hover:bg-black dark:hover:text-white';
 
   return (
     <button {...rest} className={classname}>
@@ -63,15 +35,42 @@ const ButtonClassName = ({ children, ...rest }: Partial<ButtonProps>) => {
   );
 };
 
-const ButtonInline = ({ children, ...rest }: Partial<ButtonProps>) => {
+const ButtonClassNames = ({ children, ...rest }: Partial<ButtonProps>) => {
+  const [selected, setSelected] = useState<boolean>(false);
+
   return (
     <button
       {...rest}
-      className='min-h-[2.25rem] w-fit min-w-[2.25rem] transform-gpu rounded-[36px] border-[1px] border-solid border-primary bg-primary px-[1.86em] text-center text-[0.875rem] leading-[1rem] text-white transition-[color,background,transform] duration-[.2s] hover:bg-white  hover:text-primary active:scale-95'
+      className={cssClassnames(selected)}
+      onClick={() => setSelected(!selected)}
     >
       {children}
     </button>
   );
+};
+
+const ButtonCssModule = ({ children, ...rest }: Partial<ButtonProps>) => {
+  const [selected, setSelected] = useState<boolean>(false);
+
+  const classNames = (...classNames: (false | null | undefined | string)[]) => {
+    const trim = (value: string) => value.replace(/\s+/g, ' ').trim();
+    return { className: trim(classNames.filter(Boolean).join(' ')) };
+  };
+
+  const className = classNames(cssModule.base, selected && cssModule.selected);
+
+  return (
+    <button {...rest} {...className} onClick={() => setSelected(!selected)}>
+      {children}
+    </button>
+  );
+};
+
+export {
+  ButtonInline,
+  ButtonConstClassName,
+  ButtonClassNames,
+  ButtonCssModule,
 };
 
 /************************/
@@ -87,11 +86,3 @@ const ButtonInline = ({ children, ...rest }: Partial<ButtonProps>) => {
 // Ne pas faire d'injection dynamique de variables (ex: text-[${rem(14)}]) -> sera ignorée au build donc ne fonctionnera pas
 // const className = `border-2 border-solid rounded-2xl text-[${rem(14)}]`;
 /************************/
-
-export {
-  ButtonMemo,
-  ButtonModule,
-  ButtonSelected,
-  ButtonClassName,
-  ButtonInline,
-};

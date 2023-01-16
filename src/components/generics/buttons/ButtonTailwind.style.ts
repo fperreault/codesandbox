@@ -1,0 +1,35 @@
+import classNames from 'classnames';
+
+const style = (selected?: boolean) =>
+  classNames(
+    'min-h-[2.25rem]',
+    'w-fit',
+    'min-w-full',
+    'rounded-[36px]',
+    'border-[1px]',
+    'border-solid',
+    'border-primary',
+    'px-[1.86em]',
+    'text-center',
+    'text-[0.875rem]',
+    'leading-[1rem]',
+    'active:scale-95',
+
+    'transform-gpu',
+    'transition-[color,background,transform]',
+    'duration-[.2s]',
+
+    'tablet:min-w-[2.25rem]',
+
+    'hover:bg-white',
+    'hover:text-primary',
+
+    'dark:bg-white',
+    'dark:text-black',
+    'dark:hover:bg-black',
+    'dark:hover:text-white',
+
+    selected ? 'bg-white text-primary' : 'bg-primary text-white',
+  );
+
+export default style;

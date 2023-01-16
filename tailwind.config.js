@@ -5,11 +5,14 @@ module.exports = {
   plugins: [],
   theme: {
     colors: {
-      white: '#ffffff',
-      black: '#000000',
-      primary: '#0E3A83',
-      // white: 'var(--colors-white)',
-      // primary: 'var(--colors-primary)',
+      white: '#ffffff', // white: 'var(--colors-white)',
+      black: '#000000', // primary: 'var(--colors-black)',
+      primary: '#0E3A83', // primary: 'var(--colors-primary)',
+    },
+    screens: {
+      'tablet': '640px', // => @media (min-width: 640px)
+      'laptop': '1024px', // => @media (min-width: 1024px)
+      'desktop': '1280px', // => @media (min-width: 1280px)
     },
   },
 };

@@ -5,6 +5,7 @@
   "main": "src/index.tsx",
   "dependencies": {
     "@reduxjs/toolkit": "1.8.3",
+    "classnames": "^2.3.2",
     "eslint-config-prettier": "^8.5.0",
     "focus-trap-react": "^8.8.2",
     "react": "18.1.0",

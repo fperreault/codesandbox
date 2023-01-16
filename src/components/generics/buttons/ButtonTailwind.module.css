@@ -1,35 +1,37 @@
- 
- .base {
-    @apply text-white text-sm text-center;
+.base {
+  @apply text-center text-sm leading-[1rem] text-white;
 
-    @apply bg-primary; 
-    @apply border-solid border-[1px] border-primary rounded-[36px]; 
+  @apply bg-primary;
+  @apply rounded-[36px] border-[1px] border-solid border-primary;
 
-    @apply px-7;
-    @apply min-w-[2.25rem] min-h-[2.25rem] w-fit;
+  @apply px-7;
+  @apply min-h-[2.25rem] w-fit min-w-full tablet:min-w-[2.25rem];
 
-    @apply duration-[.2s];
-    @apply transition-[color,background,transform];
+  @apply duration-[.2s];
+  @apply transition-[color,background,transform];
 
-    @apply hover:bg-white;
-    @apply hover:text-black;
+  @apply hover:bg-white;
+  @apply hover:text-primary;
 
-    @apply active:scale-95;
+  @apply active:scale-95;
 
-    @apply dark:text-black;
-    @apply dark:bg-white;
-  }
-  .selected {
-    @apply text-primary bg-white;
-  }
+  @apply dark:text-black;
+  @apply dark:bg-white;
 
-  /* Dark mode */
-  /* Workarround avec css module, utiliser :global(.dark) au lieu de dark: */
-  :global(.dark) .base,  
-  :global(.dark) .selected {
-    @apply text-black;
-    @apply bg-white;
+  /* add custom css props here */
+}
 
-    @apply hover:bg-black;
-    @apply hover:text-white;
-  }
+.selected {
+  @apply bg-white text-primary;
+}
+
+/* Dark mode */
+/* Workarround avec css module, utiliser :global(.dark) au lieu de dark: */
+:global(.dark) .base,
+:global(.dark) .selected {
+  @apply text-black;
+  @apply bg-white;
+
+  @apply hover:bg-black;
+  @apply hover:text-white;
+}
