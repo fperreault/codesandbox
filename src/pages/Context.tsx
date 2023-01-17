@@ -148,7 +148,7 @@ const PageContext = (): JSX.Element => {
 
       <section>
         <H3>Modal ({!modal.content ? 'fermée' : 'ouverte'})</H3>
-        <Button.SmallPrimary
+        <Button.Primary
           label='Open Modal #1'
           onClick={() => modal.open(<H1 tabIndex={0}>Lorem ipsum</H1>)}
         />

@@ -2,12 +2,7 @@
 import React from 'react';
 
 import { H1 } from '@components/generics';
-import {
-  Button,
-  ButtonClassNames,
-  ButtonCx,
-  ButtonCssModule,
-} from '@components/generics/buttons/ButtonTailwind';
+import { Button } from '@components/generics/buttons/ButtonTailwind';
 
 import { Wrapper } from '@styles/tools';
 
@@ -21,16 +16,15 @@ const PageTailwind = (): JSX.Element => {
       <H1>Tailwind</H1>
       <section>
         <h2 className='text-2xl text-primary'>Tailwind buttons</h2>
-        <div className='grid grid-cols-1 gap-4 tablet:grid-cols-2 laptop:grid-cols-4'>
+        <div className='grid grid-cols-1 gap-4 tablet:grid-cols-2'>
           <Button.Primary label='inline (primary)' />
           <Button.OutlinePrimary label='inline (outline)' />
-          <Button.SmallPrimary label='inline (small)' />
-          <Button.SmallOutlinePrimary label='inline (small outline)' />
-          <Button.LargePrimary label='inline (large primary)' />
-          <Button.LargeOutlinePrimary label='inline (large outline)' />
-          <ButtonClassNames label='classnames' />
-          <ButtonCx label='cx' />
-          <ButtonCssModule label='cssmodule' />
+          <Button.SmallPrimary label='classnames (small)' />
+          <Button.SmallOutlinePrimary label='classnames (small outline)' />
+          <Button.LargePrimary label='cx (large primary)' />
+          <Button.LargeOutlinePrimary label='cx (large outline)' />
+          <Button.XLargePrimary label='cssmodule (xlarge)' />
+          <Button.XLargeOutlinePrimary label='cssmodule  (xlarge outline)' />
         </div>
       </section>
     </Wrapper>

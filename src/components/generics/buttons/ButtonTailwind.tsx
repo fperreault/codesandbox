@@ -1,33 +1,20 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import React, {
-  DetailedHTMLProps,
-  ButtonHTMLAttributes,
-  useState,
-} from 'react';
+import React, { useState } from 'react';
 
 import { twMerge } from 'tailwind-merge';
 
 import { cx } from '@styles/utils';
 
 import cssModule from './ButtonTailwind.module.css';
-import { styleInline } from './ButtonTailwind.style';
 import { styleClassNames } from './ButtonTailwind.style';
 import { styleCx } from './ButtonTailwind.style';
+import { ButtonProps } from './ButtonTailwind.type';
+import { ButtonVariantes } from './ButtonTailwind.type';
 
-type ButtonProps = DetailedHTMLProps<
-  ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
-> & {
-  label: string;
-  selected: boolean;
-};
-
-type ButtonVariantes = {
-  outline: boolean;
-};
-
-// INLINE STYLE
-const ButtonPrimary = ({
+/****************************/
+// INLINE STYLE - NORMAL SIZE
+/****************************/
+const ButtonInlinePrimary = ({
   children,
   selected,
   outline,
@@ -58,39 +45,44 @@ const ButtonPrimary = ({
   );
 };
 
-const ButtonClassNames = ({ label, ...rest }: Partial<ButtonProps>) => {
-  const [selected, setSelected] = useState<boolean>(false);
-
+/*******************************/
+// CLASSNAMES STYLE - SMALL SIZE
+/*******************************/
+const ButtonClassNamesPrimary = ({
+  children,
+  selected,
+  outline,
+  small,
+  ...rest
+}: Partial<ButtonProps & ButtonVariantes>) => {
   return (
-    <button
-      role='switch'
-      aria-checked={selected}
-      aria-disabled={rest.disabled && true}
-      onClick={() => setSelected(!selected)}
-      className={styleClassNames(selected)}
-    >
-      {label && label}
+    <button {...rest} className={styleClassNames({ selected, outline, small })}>
+      {children && children}
     </button>
   );
 };
 
-const ButtonCx = ({ label, ...rest }: Partial<ButtonProps>) => {
-  const [selected, setSelected] = useState<boolean>(false);
-
+/***********************/
+// CX STYLE - LARGE SIZE
+/***********************/
+const ButtonCxPrimary = ({
+  children,
+  selected,
+  outline,
+  small,
+  ...rest
+}: Partial<ButtonProps & ButtonVariantes>) => {
   return (
-    <button
-      role='switch'
-      aria-checked={selected}
-      aria-disabled={rest.disabled && true}
-      onClick={() => setSelected(!selected)}
-      className={styleCx(selected)}
-    >
-      {label && label}
+    <button {...rest} className={styleCx({ selected, outline, small })}>
+      {children && children}
     </button>
   );
 };
 
-const ButtonCssModule = ({ label, ...rest }: Partial<ButtonProps>) => {
+/*******************************/
+// CSS MODULE STYLE - XLARGE SIZE
+/*******************************/
+const ButtonCssModule = ({ children, ...rest }: Partial<ButtonProps>) => {
   const [selected, setSelected] = useState<boolean>(false);
 
   const className = cx(cssModule.button, selected && cssModule.selected);
@@ -103,7 +95,7 @@ const ButtonCssModule = ({ label, ...rest }: Partial<ButtonProps>) => {
       onClick={() => setSelected(!selected)}
       className={className}
     >
-      {label && label}
+      {children && children}
     </button>
   );
 };
@@ -135,21 +127,27 @@ const ButtonFactory = (
   return Component;
 };
 
-/**
- * Button
- */
 const Button = {
-  Primary: ButtonFactory(ButtonPrimary),
-  OutlinePrimary: ButtonFactory(ButtonPrimary, { outline: true }),
+  Primary: ButtonFactory(ButtonInlinePrimary),
+  OutlinePrimary: ButtonFactory(ButtonInlinePrimary, { outline: true }),
 
-  SmallPrimary: ButtonFactory(ButtonPrimary),
-  SmallOutlinePrimary: ButtonFactory(ButtonPrimary),
+  SmallPrimary: ButtonFactory(ButtonClassNamesPrimary, { small: true }),
+  SmallOutlinePrimary: ButtonFactory(ButtonClassNamesPrimary, {
+    small: true,
+    outline: true,
+  }),
 
-  LargePrimary: ButtonFactory(ButtonPrimary),
-  LargeOutlinePrimary: ButtonFactory(ButtonPrimary),
+  LargePrimary: ButtonFactory(ButtonCxPrimary, { large: true }),
+  LargeOutlinePrimary: ButtonFactory(ButtonCxPrimary, {
+    large: true,
+    outline: true,
+  }),
+
+  XLargePrimary: ButtonFactory(ButtonCssModule),
+  XLargeOutlinePrimary: ButtonFactory(ButtonCssModule),
 };
 
-export { Button, ButtonCssModule, ButtonClassNames, ButtonCx };
+export { Button };
 
 /************************/
 // TAILWIND OBSERVATIONS
