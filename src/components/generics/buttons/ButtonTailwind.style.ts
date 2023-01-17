@@ -68,5 +68,6 @@ const styleCx = (selected?: boolean) =>
     selected ? 'bg-white text-primary' : 'bg-primary text-white',
   );
 
+export { styleInline };
 export { styleClassNames };
 export { styleCx };

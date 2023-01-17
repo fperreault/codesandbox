@@ -5,82 +5,151 @@ import React, {
   useState,
 } from 'react';
 
+import { twMerge } from 'tailwind-merge';
+
 import { cx } from '@styles/utils';
 
 import cssModule from './ButtonTailwind.module.css';
+import { styleInline } from './ButtonTailwind.style';
 import { styleClassNames } from './ButtonTailwind.style';
 import { styleCx } from './ButtonTailwind.style';
 
 type ButtonProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
->;
+> & {
+  label: string;
+  selected: boolean;
+};
 
-const ButtonInline = ({ children, ...rest }: Partial<ButtonProps>) => {
-  const [selected, setSelected] = useState<boolean>(false);
+type ButtonVariantes = {
+  outline: boolean;
+};
 
-  /*const classname = `min-h-[2.25rem] w-fit min-w-full transform-gpu rounded-[36px] border-[1px] border-solid border-primary  px-[1.86em] text-center text-[0.875rem] leading-[1rem]  transition-[color,background,transform] duration-[.2s] hover:bg-white hover:text-primary  active:scale-95 dark:bg-white dark:text-black dark:hover:bg-black dark:hover:text-white tablet:min-w-[2.25rem] ${
-    selected ? 'bg-white text-primary' : 'bg-primary text-white'
-  } `;*/
-
+// INLINE STYLE
+const ButtonPrimary = ({
+  children,
+  selected,
+  outline,
+  ...rest
+}: Partial<ButtonProps & ButtonVariantes>) => {
   return (
     <button
       {...rest}
-      className={`min-h-[2.25rem] w-fit min-w-full transform-gpu rounded-[36px] border-[1px] border-solid border-primary  px-[1.86em] text-center text-[0.875rem] leading-[1rem]  transition-[color,background,transform] duration-[.2s] hover:bg-white hover:text-primary  active:scale-95 dark:bg-white dark:text-black dark:hover:bg-black dark:hover:text-white tablet:min-w-[2.25rem] ${
-        selected ? 'bg-white text-primary' : 'bg-primary text-white'
-      } `}
-      onClick={() => setSelected(!selected)}
+      className={twMerge(
+        // base style
+        `min-h-[2.25rem] w-fit min-w-full transform-gpu rounded-[36px] border-[1px] border-solid border-primary bg-primary px-[1.86em]  text-center text-[0.875rem] leading-[1rem] text-white  transition-[color,background,transform] duration-[.2s] hover:bg-white hover:text-primary  active:scale-95 dark:bg-white dark:text-black dark:hover:bg-black dark:hover:text-white tablet:min-w-[2.25rem]`,
+
+        // selected style
+        `${selected ? 'bg-white text-primary' : ''}`,
+
+        // outline style override
+        `${
+          outline &&
+          'border-primary bg-white text-primary hover:bg-primary hover:text-white'
+        }`,
+
+        // outline selected style
+        `${outline && selected && ' border-primary bg-primary text-white'}`,
+      )}
     >
-      {children}
+      {children && children}
     </button>
   );
 };
 
-const ButtonClassNames = ({ children, ...rest }: Partial<ButtonProps>) => {
+const ButtonClassNames = ({ label, ...rest }: Partial<ButtonProps>) => {
   const [selected, setSelected] = useState<boolean>(false);
 
   return (
     <button
-      {...rest}
+      role='switch'
+      aria-checked={selected}
+      aria-disabled={rest.disabled && true}
+      onClick={() => setSelected(!selected)}
       className={styleClassNames(selected)}
-      onClick={() => setSelected(!selected)}
     >
-      {children}
+      {label && label}
     </button>
   );
 };
 
-const ButtonCx = ({ children, ...rest }: Partial<ButtonProps>) => {
+const ButtonCx = ({ label, ...rest }: Partial<ButtonProps>) => {
   const [selected, setSelected] = useState<boolean>(false);
 
   return (
     <button
-      {...rest}
-      className={styleCx(selected)}
+      role='switch'
+      aria-checked={selected}
+      aria-disabled={rest.disabled && true}
       onClick={() => setSelected(!selected)}
+      className={styleCx(selected)}
     >
-      {children}
+      {label && label}
     </button>
   );
 };
 
-const ButtonCssModule = ({ children, ...rest }: Partial<ButtonProps>) => {
+const ButtonCssModule = ({ label, ...rest }: Partial<ButtonProps>) => {
   const [selected, setSelected] = useState<boolean>(false);
 
   const className = cx(cssModule.button, selected && cssModule.selected);
 
   return (
     <button
-      {...rest}
-      className={className}
+      role='switch'
+      aria-checked={selected}
+      aria-disabled={rest.disabled && true}
       onClick={() => setSelected(!selected)}
+      className={className}
     >
-      {children}
+      {label && label}
     </button>
   );
 };
 
-export { ButtonInline, ButtonCssModule, ButtonClassNames, ButtonCx };
+const ButtonFactory = (
+  Button: React.FC<Partial<ButtonProps>>,
+  variante?: Partial<ButtonVariantes>,
+): React.FC<Partial<ButtonProps>> => {
+  const Component = ({ label, ...rest }: Partial<ButtonProps>): JSX.Element => {
+    return (
+      <Button
+        {...variante}
+        {...rest}
+        {...(rest.selected === false || rest.selected === true
+          ? {
+              'role': 'switch',
+              'aria-checked': rest.selected,
+            }
+          : {})}
+        aria-disabled={rest.disabled && true}
+      >
+        {label && label}
+      </Button>
+    );
+  };
+
+  Component.displayName = Button.displayName;
+
+  return Component;
+};
+
+/**
+ * Button
+ */
+const Button = {
+  Primary: ButtonFactory(ButtonPrimary),
+  OutlinePrimary: ButtonFactory(ButtonPrimary, { outline: true }),
+
+  SmallPrimary: ButtonFactory(ButtonPrimary),
+  SmallOutlinePrimary: ButtonFactory(ButtonPrimary),
+
+  LargePrimary: ButtonFactory(ButtonPrimary),
+  LargeOutlinePrimary: ButtonFactory(ButtonPrimary),
+};
+
+export { Button, ButtonCssModule, ButtonClassNames, ButtonCx };
 
 /************************/
 // TAILWIND OBSERVATIONS

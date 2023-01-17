@@ -3,7 +3,7 @@ import React from 'react';
 
 import { H1 } from '@components/generics';
 import {
-  ButtonInline,
+  Button,
   ButtonClassNames,
   ButtonCx,
   ButtonCssModule,
@@ -22,10 +22,15 @@ const PageTailwind = (): JSX.Element => {
       <section>
         <h2 className='text-2xl text-primary'>Tailwind buttons</h2>
         <div className='grid grid-cols-1 gap-4 tablet:grid-cols-2 laptop:grid-cols-4'>
-          <ButtonInline>inline injection</ButtonInline>
-          <ButtonClassNames>with classnames</ButtonClassNames>
-          <ButtonCx>with cx</ButtonCx>
-          <ButtonCssModule>css module</ButtonCssModule>
+          <Button.Primary label='inline (primary)' />
+          <Button.OutlinePrimary label='inline (outline)' />
+          <Button.SmallPrimary label='inline (small)' />
+          <Button.SmallOutlinePrimary label='inline (small outline)' />
+          <Button.LargePrimary label='inline (large primary)' />
+          <Button.LargeOutlinePrimary label='inline (large outline)' />
+          <ButtonClassNames label='classnames' />
+          <ButtonCx label='cx' />
+          <ButtonCssModule label='cssmodule' />
         </div>
       </section>
     </Wrapper>
