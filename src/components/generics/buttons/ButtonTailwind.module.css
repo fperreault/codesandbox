@@ -1,4 +1,4 @@
-.base {
+.button {
   @apply text-center text-sm leading-[1rem] text-white;
 
   @apply bg-primary;
