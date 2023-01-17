@@ -35,7 +35,7 @@ const styleClassNames = (selected?: boolean) =>
     selected ? 'bg-white text-primary' : 'bg-primary text-white',
   );
 
-const styleCxCustom = (selected?: boolean) =>
+const styleCx = (selected?: boolean) =>
   cx(
     'min-h-[2.25rem]',
     'w-fit',
@@ -68,5 +68,5 @@ const styleCxCustom = (selected?: boolean) =>
     selected ? 'bg-white text-primary' : 'bg-primary text-white',
   );
 
-export { styleClassNames as cssClassnames };
-export { styleCxCustom as cssCx };
+export { styleClassNames };
+export { styleCx };

@@ -8,8 +8,8 @@ import React, {
 import { cx } from '@styles/utils';
 
 import cssModule from './ButtonTailwind.module.css';
-import { cssClassnames } from './ButtonTailwind.style';
-import { cssCx } from './ButtonTailwind.style';
+import { styleClassNames } from './ButtonTailwind.style';
+import { styleCx } from './ButtonTailwind.style';
 
 type ButtonProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
@@ -42,7 +42,7 @@ const ButtonClassNames = ({ children, ...rest }: Partial<ButtonProps>) => {
   return (
     <button
       {...rest}
-      className={cssClassnames(selected)}
+      className={styleClassNames(selected)}
       onClick={() => setSelected(!selected)}
     >
       {children}
@@ -56,7 +56,7 @@ const ButtonCx = ({ children, ...rest }: Partial<ButtonProps>) => {
   return (
     <button
       {...rest}
-      className={cssCx(selected)}
+      className={styleCx(selected)}
       onClick={() => setSelected(!selected)}
     >
       {children}
