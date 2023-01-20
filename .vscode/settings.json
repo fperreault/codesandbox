@@ -32,4 +32,7 @@
   "tailwindCSS.includeLanguages": {
     "plaintext": "html"
   },
+  "tailwindCSS.experimental.classRegex": [
+    ["[{classnames,classNames,tailwindCx,cx,twMerge,clsx}]\\(([^)]*)\\)", "'([^']*)'"]
+  ]
 }

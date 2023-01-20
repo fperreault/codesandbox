@@ -6,12 +6,14 @@ type ButtonProps = DetailedHTMLProps<
 > & {
   label: string;
   selected: boolean;
+  variants: Partial<ButtonVariantes> | undefined;
 };
 
 type ButtonVariantes = {
   outline: boolean;
   small: boolean;
   large: boolean;
+  xlarge: boolean;
 };
 
 export type { ButtonProps, ButtonVariantes };

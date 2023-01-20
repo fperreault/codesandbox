@@ -15,16 +15,59 @@ const PageTailwind = (): JSX.Element => {
     <Wrapper>
       <H1>Tailwind</H1>
       <section>
-        <h2 className='text-2xl text-primary'>Tailwind buttons</h2>
-        <div className='grid grid-cols-1 gap-4 tablet:grid-cols-2'>
-          <Button.Primary label='inline (primary)' />
-          <Button.OutlinePrimary label='inline (outline)' />
-          <Button.SmallPrimary label='classnames (small)' />
-          <Button.SmallOutlinePrimary label='classnames (small outline)' />
-          <Button.LargePrimary label='cx (large primary)' />
-          <Button.LargeOutlinePrimary label='cx (large outline)' />
-          <Button.XLargePrimary label='cssmodule (xlarge)' />
-          <Button.XLargeOutlinePrimary label='cssmodule  (xlarge outline)' />
+        <h2 className='text-2xl text-primary dark:text-white'>
+          Tailwind buttons (inline)
+        </h2>
+        <div className='grid grid-cols-1 items-center gap-4 tablet:grid-cols-2'>
+          <Button.Inline.SmallPrimary label='small' />
+          <Button.Inline.SmallOutlinePrimary label='small outline' />
+          <Button.Inline.Primary label='normal' />
+          <Button.Inline.OutlinePrimary label='normal outline' />
+          <Button.Inline.LargePrimary label='large' />
+          <Button.Inline.LargeOutlinePrimary label='large outline' />
+          <Button.Inline.SmallPrimary label='small disabled' disabled />
+        </div>
+      </section>
+      <section>
+        <h2 className='text-2xl text-primary dark:text-white'>
+          Tailwind buttons (classnames)
+        </h2>
+        <div className='grid grid-cols-1 items-center gap-4 tablet:grid-cols-2'>
+          <Button.Classnames.SmallPrimary label='small' />
+          <Button.Classnames.SmallOutlinePrimary label='small outline' />
+          <Button.Classnames.Primary label='normal' />
+          <Button.Classnames.OutlinePrimary label='normal outline' />
+          <Button.Classnames.LargePrimary label='large' />
+          <Button.Classnames.LargeOutlinePrimary label='large outline' />
+          <Button.Classnames.SmallPrimary label='small disabled' disabled />
+        </div>
+      </section>
+      <section>
+        <h2 className='text-2xl text-primary dark:text-white'>
+          Tailwind buttons (cx)
+        </h2>
+        <div className='grid grid-cols-1 items-center gap-4 tablet:grid-cols-2'>
+          <Button.CX.SmallPrimary label='small' />
+          <Button.CX.SmallOutlinePrimary label='small outline' />
+          <Button.CX.Primary label='normal' />
+          <Button.CX.OutlinePrimary label='normal outline' />
+          <Button.CX.LargePrimary label='large' />
+          <Button.CX.LargeOutlinePrimary label='large outline' />
+          <Button.CX.SmallPrimary label='small disabled' disabled />
+        </div>
+      </section>
+      <section>
+        <h2 className='text-2xl text-primary dark:text-white'>
+          Tailwind buttons (cssmodule)
+        </h2>
+        <div className='grid grid-cols-1 items-center gap-4 tablet:grid-cols-2'>
+          <Button.CSSMODULE.SmallPrimary label='small' />
+          <Button.CSSMODULE.SmallOutlinePrimary label='small outline' />
+          <Button.CSSMODULE.Primary label='normal' />
+          <Button.CSSMODULE.OutlinePrimary label='normal outline' />
+          <Button.CSSMODULE.LargePrimary label='large' />
+          <Button.CSSMODULE.LargeOutlinePrimary label='large outline' />
+          <Button.CSSMODULE.SmallPrimary label='small disabled' disabled />
         </div>
       </section>
     </Wrapper>

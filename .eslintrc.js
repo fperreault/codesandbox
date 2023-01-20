@@ -28,7 +28,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 0,
 
     'tailwindcss/classnames-order': 'warn',
-    'tailwindcss/enforces-negative-arbitrary-values': 'warn',
+    'tailwindcss/enforces-negative-arbitrary-values': 'error',
     'tailwindcss/enforces-shorthand': 'warn',
     'tailwindcss/migration-from-tailwind-2': 'warn',
     'tailwindcss/no-arbitrary-value': 'off',
@@ -103,6 +103,16 @@ module.exports = {
   settings: {
     react: {
       version: 'detect',
+    },
+    tailwindcss: {
+      callees: [
+        'classnames',
+        'classNames',
+        'cx',
+        'tailwindCx',
+        'twMerge',
+        'clsx',
+      ],
     },
   },
 

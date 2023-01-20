@@ -1,33 +1,62 @@
 .button {
-  @apply text-center text-sm leading-[1rem] text-white;
-
+  @apply min-h-[3rem] w-fit min-w-full;
+  @apply px-[1.86em];
+  @apply text-center text-white text-[1rem] leading-[1];
   @apply bg-primary;
-  @apply rounded-[36px] border-[1px] border-solid border-primary;
+  @apply rounded-[48px] border-[1px] border-solid border-primary;
+  
+  @apply transform-gpu transition-[color,background,transform] duration-[.2s];
 
-  @apply px-7;
-  @apply min-h-[2.25rem] w-fit min-w-full tablet:min-w-[2.25rem];
+  @apply tablet:min-w-[3rem];
 
-  @apply duration-[.2s];
-  @apply transition-[color,background,transform];
-
-  @apply hover:bg-white;
-  @apply hover:text-primary;
-
+  @apply hover:bg-white hover:text-primary;
+  
   @apply active:scale-95;
-
-  @apply dark:text-black;
-  @apply dark:bg-white;
-
-  /* add custom css props here */
+}
+.button:disabled,
+.button[aria-disabled='true']{
+  @apply bg-black;
+  opacity: 0.5;
+  cursor: none;
+  pointer-events: none;
 }
 
-.selected {
-  @apply bg-white text-primary;
+.button:focus-visible{
+  outline-width: 2px;
+  outline-offset: 4px;
+  outline-style: dotted;
+}
+.button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.outline {
+  @apply border-primary bg-white text-primary hover:bg-primary hover:text-white;
+}
+
+
+.small {
+  @apply min-h-[1.5rem] rounded-[20px] text-[0.800rem];
+}
+
+.large {
+  @apply min-h-[4rem] rounded-[60px] text-[1.5rem];
+}
+
+.xlarge {
+  @apply min-h-[5rem] rounded-[70px] text-[1.5rem];
+}
+
+.selected + .outline{
+  @apply border-primary bg-primary text-white;
+}
+
+.selected{
+  @apply bg-primary text-white;
 }
 
 /* Dark mode */
-/* Workarround avec css module, utiliser :global(.dark) au lieu de dark: */
-:global(.dark) .base,
+:global(.dark) .button,
 :global(.dark) .selected {
   @apply text-black;
   @apply bg-white;
