@@ -1,0 +1,60 @@
+.button {
+  @apply min-h-[3rem] w-fit min-w-full;
+  @apply px-[1.86em];
+  @apply text-center text-white text-[1rem] leading-[1];
+  @apply bg-primary;
+  @apply rounded-[48px] border-[1px] border-solid border-primary;
+  
+  @apply transform-gpu transition-[color,background,transform] duration-[.2s];
+
+  @apply tablet:min-w-[3rem];
+
+  @apply hover:bg-white hover:text-primary;
+  
+  @apply active:scale-95;
+}
+.button:disabled,
+.button[aria-disabled='true']{
+  opacity: 0.5;
+  cursor: none;
+  pointer-events: none;
+}
+
+.button:focus-visible{
+  outline-width: 2px;
+  outline-offset: 4px;
+  outline-style: dotted;
+}
+.button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.outline {
+  @apply border-primary bg-white text-primary hover:bg-primary hover:text-white;
+}
+
+
+.small {
+  @apply min-h-[1.5rem] rounded-[20px] text-[0.800rem];
+}
+
+.large {
+  @apply min-h-[4rem] rounded-[60px] text-[1.5rem];
+}
+.selected + .outline{
+  @apply border-primary bg-primary text-white;
+}
+
+.selected{
+  @apply bg-primary text-white;
+}
+
+/* Dark mode */
+:global(.dark) .button,
+:global(.dark) .selected {
+  @apply text-black;
+  @apply bg-white;
+
+  @apply hover:bg-black;
+  @apply hover:text-white;
+}

@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "bradlc.vscode-tailwindcss",
+    "moalamri.inline-fold",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint"
+  ]
+}

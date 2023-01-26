@@ -1,0 +1,54 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@assets/*": [
+        "assets/*"
+      ],
+      "@components/*": [
+        "components/*"
+      ],
+      "@hooks/*": [
+        "hooks/*"
+      ],
+      "@pages/*": [
+        "pages/*"
+      ],
+      "@store/*": [
+        "store/*"
+      ],
+      "@styles/*": [
+        "styles/*"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ]
+    },
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "allowJs": true
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx"
+  ]
+}
+
