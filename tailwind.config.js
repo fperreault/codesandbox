@@ -38,9 +38,14 @@ module.exports = {
       '6': '48px',
     },
     screens: {
-      'tablet': '640px', // => @media (min-width: 640px)
-      'laptop': '1024px', // => @media (min-width: 1024px)
-      'desktop': '1280px', // => @media (min-width: 1280px)
+      'tablet': '640px', // tablet: => @media (min-width: 640px)
+      'laptop': '1024px', // laptop: => @media (min-width: 1024px)
+      'desktop': '1280px', // desktop: => @media (min-width: 1280px)
+    },
+    extend: {
+      maxWidth: {
+        'main': '700px', // max-w-main => max-width:300px
+      },
     },
   },
 };

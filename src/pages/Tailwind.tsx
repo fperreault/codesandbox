@@ -1,10 +1,7 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React from 'react';
 
-import { H1 } from '@components/generics';
 import { Button } from '@components/generics/buttons/ButtonTailwind';
-
-import { Wrapper } from '@styles/tools';
 
 const SlideItem = () => {
   return (
@@ -51,7 +48,7 @@ const SlideItem = () => {
  */
 const PageTailwind = (): JSX.Element => {
   return (
-    <Wrapper>
+    <div className='mx-auto max-w-main'>
       <h1 className='text-3xl text-black dark:text-white'>Taildwind</h1>
 
       {/* BUTTONS */}
@@ -167,7 +164,7 @@ const PageTailwind = (): JSX.Element => {
           ))}
         </ul>
       </section>
-    </Wrapper>
+    </div>
   );
 };
 
