@@ -3,6 +3,7 @@ const plugin = require('tailwindcss/plugin');
 
 module.exports = {
   darkMode: 'class',
+  preflight: false,
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   plugins: [
     plugin(function ({ addVariant }) {
@@ -20,6 +21,7 @@ module.exports = {
       },
     },
     borderRadius: {
+      'full': '50%',
       '0': '0px',
       '1': '8px',
       '2': '12px',
