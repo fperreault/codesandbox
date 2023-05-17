@@ -54,20 +54,6 @@ const PageTailwind = (): JSX.Element => {
       {/* BUTTONS */}
       <section>
         <h2 className='text-2xl text-primary dark:text-white'>
-          Buttons (inline)
-        </h2>
-        <div className='grid grid-cols-1 items-center gap-4 tablet:grid-cols-2 desktop:grid-cols-3'>
-          <Button.Inline.SmallPrimary label='small' />
-          <Button.Inline.SmallOutlinePrimary label='small outline' />
-          <Button.Inline.Primary label='normal' />
-          <Button.Inline.OutlinePrimary label='normal outline' />
-          <Button.Inline.LargePrimary label='large' />
-          <Button.Inline.LargeOutlinePrimary label='large outline' />
-          <Button.Inline.SmallPrimary label='small disabled' disabled />
-        </div>
-      </section>
-      <section>
-        <h2 className='text-2xl text-primary dark:text-white'>
           Buttons (classnames)
         </h2>
         <div className='grid grid-cols-1 items-center gap-4 tablet:grid-cols-2 desktop:grid-cols-3'>
@@ -81,15 +67,17 @@ const PageTailwind = (): JSX.Element => {
         </div>
       </section>
       <section>
-        <h2 className='text-2xl text-primary dark:text-white'>Buttons (cx)</h2>
+        <h2 className='text-2xl text-primary dark:text-white'>
+          Buttons (classes)
+        </h2>
         <div className='grid grid-cols-1 items-center gap-4 tablet:grid-cols-2 desktop:grid-cols-3'>
-          <Button.CX.SmallPrimary label='small' />
-          <Button.CX.SmallOutlinePrimary label='small outline' />
-          <Button.CX.Primary label='normal' />
-          <Button.CX.OutlinePrimary label='normal outline' />
-          <Button.CX.LargePrimary label='large' />
-          <Button.CX.LargeOutlinePrimary label='large outline' />
-          <Button.CX.SmallPrimary label='small disabled' disabled />
+          <Button.Classes.SmallPrimary label='small' />
+          <Button.Classes.SmallOutlinePrimary label='small outline' />
+          <Button.Classes.Primary label='normal' />
+          <Button.Classes.OutlinePrimary label='normal outline' />
+          <Button.Classes.LargePrimary label='large' />
+          <Button.Classes.LargeOutlinePrimary label='large outline' />
+          <Button.Classes.SmallPrimary label='small disabled' disabled />
         </div>
       </section>
       <section>
@@ -97,13 +85,13 @@ const PageTailwind = (): JSX.Element => {
           Buttons (cssmodule)
         </h2>
         <div className='grid grid-cols-1 items-center gap-4 tablet:grid-cols-2 desktop:grid-cols-3'>
-          <Button.CSSMODULE.SmallPrimary label='small' />
-          <Button.CSSMODULE.SmallOutlinePrimary label='small outline' />
-          <Button.CSSMODULE.Primary label='normal' />
-          <Button.CSSMODULE.OutlinePrimary label='normal outline' />
-          <Button.CSSMODULE.LargePrimary label='large' />
-          <Button.CSSMODULE.LargeOutlinePrimary label='large outline' />
-          <Button.CSSMODULE.SmallPrimary label='small disabled' disabled />
+          <Button.CssModule.SmallPrimary label='small' />
+          <Button.CssModule.SmallOutlinePrimary label='small outline' />
+          <Button.CssModule.Primary label='normal' />
+          <Button.CssModule.OutlinePrimary label='normal outline' />
+          <Button.CssModule.LargePrimary label='large' />
+          <Button.CssModule.LargeOutlinePrimary label='large outline' />
+          <Button.CssModule.SmallPrimary label='small disabled' disabled />
         </div>
       </section>
 
