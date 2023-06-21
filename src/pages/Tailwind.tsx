@@ -153,29 +153,62 @@ const PageTailwind = (): JSX.Element => {
         </ul>
       </section>
 
-      {/* GROUP BASIC */}
+      {/* MODIFIERS BASIC */}
       <section>
-        <h2 className='text-2xl text-primary dark:text-white'>Groupes</h2>
+        <h2 className='text-2xl text-primary dark:text-white'>Mofifiers</h2>
         <ul role='list' className='grid gap-2 tablet:grid-cols-2'>
           {[...Array(6)].map((_, index) => (
             <li
               key={index}
-              // eslint-disable-next-line tailwindcss/no-custom-classname
-              className='group/item rounded-2 bg-primary/5 transition hover:bg-primary/30'
+              className='rounded-2 p-2 transition  odd:bg-primary/30 even:bg-primary/60 hover:bg-primary/10 hover:even:bg-primary/90'
             >
-              <a href='#' className='block w-full p-2'>
+              <a href='#' key={index} className='block w-full'>
                 <article className='flex items-center gap-2'>
                   <div className='h-6 w-6 overflow-hidden rounded-full'>
                     <img
-                      className='h-full w-full object-cover transition group-hover/item:scale-110'
+                      className='h-full w-full object-cover transition'
                       src='https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=200'
                     />
                   </div>
                   <div>
-                    <h4 className='m-0 text-lg leading-5 group-hover/item:text-primary'>
+                    <h4 className='m-0 text-lg leading-5 '>Name</h4>
+                    <span className='leading-5'>Title</span>
+                  </div>
+                </article>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* GROUP/PEER BASIC */}
+      <section>
+        <h2 className='text-2xl text-primary dark:text-white'>
+          Group/Peer - Basés sur le parent et sibling combinator ~ ⚠️
+        </h2>
+        <ul role='list' className='grid gap-2 tablet:grid-cols-2'>
+          {[...Array(4)].map((_, index) => (
+            <li
+              key={index}
+              className='group/profile-item rounded-2 bg-primary/30 transition hover:bg-primary/10'
+            >
+              <a
+                href='#'
+                className='group/profile-link block w-full p-2'
+              >
+                <article className='flex items-center gap-2'>
+                  <input type='checkbox' className='peer/checkbox-item' />
+                  <div className=' h-6 w-6 overflow-hidden rounded-full peer-checked/checkbox-item:rounded-0'>
+                    <img
+                      className='h-full w-full object-cover transition group-hover/profile-item:scale-110 group-hover/profile-item:group-odd/profile-item:scale-150 group-focus/profile-link:opacity-20'
+                      src='https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=200'
+                    />
+                  </div>
+                  <div className='peer-checked/checkbox-item:hidden'>
+                    <h4 className='m-0 text-lg leading-5 group-hover/profile-item:text-primary '>
                       Name
                     </h4>
-                    <span className='leading-5 group-hover/item:text-primary'>
+                    <span className='leading-5 group-hover/profile-item:text-primary'>
                       Title
                     </span>
                   </div>

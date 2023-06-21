@@ -59,19 +59,24 @@ const AppRoutes = (): JSX.Element => {
  * App Base
  */
 const AppBase = (): JSX.Element => {
-  const isAppReady = useAppSelector(selectAppReady);
-  //const appIsReady = useAppSelector(({ app }) => app.isReady);
-
   return (
     <NotifyProvider>
       <ModalProvider>
         <main>
-          {!isAppReady && <LoadingBar />}
+          <AppFakeLoading />
           <AppRoutes />
         </main>
       </ModalProvider>
     </NotifyProvider>
   );
+};
+
+/**
+ * App Fake Loading
+ */
+const AppFakeLoading = (): JSX.Element => {
+  const isAppReady = useAppSelector(selectAppReady);
+  return <>{!isAppReady && <LoadingBar />}</>;
 };
 
 /**
